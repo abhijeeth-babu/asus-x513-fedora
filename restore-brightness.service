@@ -1,0 +1,11 @@
+# /etc/systemd/system/restore-brightness.service
+[Unit]
+Description=Restore brightness level at startup
+After=multi-user.target suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'echo $(cat /sys/class/backlight/amdgpu_bl1/brightness) > /sys/class/backlight/amdgpu_bl1/brightness'
+
+[Install]
+WantedBy=multi-user.target
