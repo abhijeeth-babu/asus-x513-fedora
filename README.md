@@ -1,5 +1,3 @@
-Here's a simpler and more casual version:
-
 ---
 
 # Brightness Adjustment for Fedora
