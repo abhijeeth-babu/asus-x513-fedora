@@ -30,14 +30,5 @@ These scripts help restore screen brightness after waking from suspend on Fedora
    sudo systemctl enable restore-brightness.service
    sudo cp adjust-brightness.service /etc/systemd/system/
    sudo systemctl daemon-reload
-   sudo systemctl enable resume-script.service
-   sudo systemctl start resume-script.service
+   sudo systemctl enable --now resume-script.service
    ```
-
-### That's it!
-
-The brightness will now be saved and restored automatically.
-
---- 
-
-Feel free to tweak it as needed!
