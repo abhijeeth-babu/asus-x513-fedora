@@ -1,0 +1,14 @@
+# /etc/systemd/system/adjust-brightness.service
+
+
+
+[Unit]
+Description=Run script on resume from suspend
+After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+
+[Service]
+Type=simple
+ExecStart=/path/to/adjust-brightness.service.sh
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
