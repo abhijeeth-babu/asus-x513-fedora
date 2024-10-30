@@ -9,7 +9,7 @@ These scripts help restore screen brightness after waking from suspend on Fedora
 1. **adjust-brightness.sh**  
    Save to somewhere in `$PATH`. It saves brightness before suspend and restores it after.
 
-2. **adjust-brightness.service**
+2. **adjust-brightness.service**  
    The service that restores brightness after suspend. Place in `/etc/systemd/system/`.
 
 4. **restore-brightness.service**  
