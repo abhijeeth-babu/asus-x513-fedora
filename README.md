@@ -14,11 +14,11 @@ These scripts help restore screen brightness after waking from suspend on Fedora
 
 4. **restore-brightness.service**  
    Place in `/etc/systemd/system/`. Restores brightness at startup.
+
+5. **brightness-state.sh**  
+   Save to `$PATH`. It uses gdbus to monitor the lockscreen state.
    
-5. **brightness-state.sh**
-   Save to `$PATH`. It gdbus to monitor the lockscreen state.
-   
-7. **brightness-state.service**
+6. **brightness-state.service**  
    User service that runs the above script. (Also one might use autostart)
 
 ### Setup
@@ -28,10 +28,8 @@ These scripts help restore screen brightness after waking from suspend on Fedora
    sudo cp adjust-brightness.sh /usr/local/bin
    sudo chmod +x /usr/local/bin/adjust-brightness.sh
    mkdir -p ~/.local/bin
-   mv brightness-state.sh ~/.local/bin/
+   cp brightness-state.sh ~/.local/bin/
    chmod +x ~/.local/bin/brightness-state.sh
-   mkdir -p ~/.config/systemd/user/
-   cp brightness-state.service ~/.config/systemd/user/
    
    ```
 
@@ -42,6 +40,8 @@ These scripts help restore screen brightness after waking from suspend on Fedora
    sudo cp adjust-brightness.service /etc/systemd/system/
    sudo systemctl daemon-reload
    sudo systemctl enable --now adjust-brightness.service
+   mkdir -p ~/.config/systemd/user/
+   cp brightness-state.service ~/.config/systemd/user/
    systemctl --user daemon-reload
    systemctl --user enable brightness-state.service
    systemctl --user start brightness-state.service
