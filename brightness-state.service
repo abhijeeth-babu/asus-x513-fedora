@@ -1,0 +1,13 @@
+[Unit]
+Description=Screen Brightness State Management Service
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/%u/.local/bin/brightness-state.sh
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=graphical-session.target
