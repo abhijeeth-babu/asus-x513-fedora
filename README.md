@@ -1,8 +1,8 @@
 ---
 
-# Brightness Adjustment for Fedora
+# Brightness Adjustment for VivoBook_ASUSLaptop X513UA_KM513UA 
 
-These scripts help restore screen brightness after waking from suspend on Fedora 40 with GNOME and Wayland.
+These scripts help restore screen brightness after waking from suspend, and after logging in from lockscreen.
 
 ### Files
 
