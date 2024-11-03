@@ -4,7 +4,9 @@
 
 These scripts help restore screen brightness after waking from suspend, and after logging in from lockscreen.
 
-**Disclaimer**: Use at your own risk, also try to go through the scripts and service files before using them.  
+**Disclaimer**: Use at your own risk, also try to go through the scripts and service files before using them. Tested on Fedora 40 and 41. YMMV.
+
+**Dependencies**: `systemd`, `brightnessctl`, `gnome`.
 ### Files
 
 1. **adjust-brightness.sh**  
