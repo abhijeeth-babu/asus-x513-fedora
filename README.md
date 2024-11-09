@@ -1,6 +1,8 @@
 ---
 
-# Brightness Adjustment for VivoBook_ASUSLaptop X513UA_KM513UA 
+# QOL improvements for VivoBook_ASUSLaptop X513UA_KM513UA running Fedora Workstation.
+
+## Automatic restoration of brightness.
 
 These scripts help restore screen brightness after waking from suspend, and after logging in from lockscreen.
 
@@ -50,3 +52,9 @@ These scripts help restore screen brightness after waking from suspend, and afte
    systemctl --user start brightness-state.service
    
    ```
+
+   
+## Unlocking Fn key at boot.  
+```sh
+   sudo grubby --update-kernel=ALL --args="asus_wmi.fnlock_default=0"
+```
