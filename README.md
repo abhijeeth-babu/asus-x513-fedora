@@ -2,6 +2,8 @@
 
 # QOL improvements for VivoBook_ASUSLaptop X513UA_KM513UA running Fedora Workstation.
 
+**As of Linux kernel 6.11.10-300, these tweaks don't seem necessary.**  
+
 ## Automatic restoration of brightness.
 
 These scripts help restore screen brightness after waking from suspend, and after logging in from lockscreen.
