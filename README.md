@@ -7,6 +7,28 @@
    sudo grubby --update-kernel=ALL --args="asus_wmi.fnlock_default=0"
 ```
 
+## Setting up the 3.5mm jack microphone.
+The device has Realtek ALC897 codec. To set up the microphone:
+1. Install `alsa-utils`.
+   ```sh
+      sudo dnf install alsa-utils
+   ```
+2. Launch the HDAJackRetask utility.
+3. Select the Realtek ALC897 codec from the drop down list.
+4. Select show unconnected pins and advanced override.
+5. Override the `0x19` pin and set it to **Microphone**.
+6. Install boot override and reboot.
+If it fails with the error that the device is busy, try the following, and then
+install the boot override.
+```sh
+   systemctl --user stop pipewire.socket
+   systemctl --user stop pipewire.service
+   systemctl --user stop pipewire-pulse.socket
+   systemctl --user stop pipewire-pulse.service
+ ```
+![Screenshot From 2025-01-17 17-47-29](https://github.com/user-attachments/assets/cd3fa88b-d86a-45f2-92ce-217bb03bcfb7)
+
+
 ## Automatic restoration of brightness.
 
 **NOTE: As of Linux kernel 6.11.10-300, these tweaks don't seem necessary.**  
