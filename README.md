@@ -83,3 +83,71 @@ These scripts help restore screen brightness after waking from suspend, and afte
 
    
 
+
+## Setting Battery Charge Threshold
+
+To extend battery lifespan, you can set a charge threshold to stop charging at a specific percentage. This is particularly useful for laptops that are often plugged in. The following systemd services will set the battery charge threshold at boot and after resuming from suspend. If on gnome, you can use [Battery Health Charging extension for GNOME shell](https://github.com/maniacx/Battery-Health-Charging)
+
+### Files
+
+1. **battery-charge-threshold.service**  
+   This service sets the battery charge threshold at boot. Place it in `/etc/systemd/system/`.
+
+2. **battery-resume.service**  
+   This service sets the battery charge threshold after resuming from suspend. Place it in `/etc/systemd/system/`.
+
+### Setup
+
+1. **Create the Services**  
+   Create the following files with the provided content.
+
+   **`/etc/systemd/system/battery-charge-threshold.service`**:
+   ```ini
+   [Unit]
+   Description=Set the battery charge threshold at boot
+   After=multi-user.target
+
+   [Service]
+   Type=oneshot
+   ExecStart=/bin/bash -c 'echo 60 > /sys/class/power_supply/BAT0/charge_control_end_threshold'
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+   **`/etc/systemd/system/battery-resume.service`**:
+   ```ini
+   [Unit]
+   Description=Set battery charge threshold after resume
+   After=suspend.target
+
+   [Service]
+   Type=oneshot
+   ExecStart=/bin/bash -c 'echo 60 > /sys/class/power_supply/BAT0/charge_control_end_threshold'
+
+   [Install]
+   WantedBy=suspend.target
+   ```
+
+2. **Enable and Start the Services**  
+   Run the following commands to enable and start the services:
+
+   ```sh
+   sudo systemctl daemon-reload
+   sudo systemctl enable --now battery-charge-threshold.service
+   sudo systemctl enable --now battery-resume.service
+   ```
+
+3. **Verify the Services**  
+   Check the status of the services to ensure they are running correctly:
+
+   ```sh
+   systemctl status battery-charge-threshold.service
+   systemctl status battery-resume.service
+   ```
+
+### Notes
+- Replace `60` in the `ExecStart` lines with your desired threshold (e.g., `80` or `100`).
+- If your battery device is not `BAT0`, replace it with the correct device name (e.g., `BAT1`).
+
+
