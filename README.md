@@ -9,9 +9,9 @@
 
 ## Setting up the 3.5mm jack microphone.
 The device has Realtek ALC897 codec. To set up the microphone:
-1. Install `alsa-utils`.
+1. Install `alsa-toola`.
    ```sh
-      sudo dnf install alsa-utils
+      sudo dnf install alsa-tools
    ```
 2. Launch the HDAJackRetask utility.
 3. Select the Realtek ALC897 codec from the drop down list.
