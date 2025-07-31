@@ -6,7 +6,7 @@
 ```sh
    sudo grubby --update-kernel=ALL --args="asus_wmi.fnlock_default=0"
    # For immutable distros
-   sudo rpm-ostree kargs --add="asus_wmi.fnlock_default=0"
+   sudo rpm-ostree kargs --append "asus_wmi.fnlock_default=0"
 ```
 
 ## Setting up the 3.5mm jack microphone.
